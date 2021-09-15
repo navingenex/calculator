@@ -1,0 +1,9 @@
+.btn {
+  width: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 2px;
+  color: #ffffff;
+  background-color: #585858;
+}

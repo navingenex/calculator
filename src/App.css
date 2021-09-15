@@ -14,12 +14,14 @@
 }
 
 .App-header {
-  min-height: 100vh;
+  background: #4a4848;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
+  width: fit-content;
+  margin: 20% auto;
 }
 
 .App-link {
@@ -36,4 +38,8 @@
   100% {
     transform: translateY(0px);
   }
+}
+
+input[type="text"] {
+  outline: none;
 }
