@@ -9,7 +9,7 @@ export const calculatorSlice = createSlice({
   initialState,
   reducers: {
     setResult: (state, action) => {
-      state.result += action.payload;
+      state.result = action.payload;
     },
     del: (state) => {
       state.result = "";
