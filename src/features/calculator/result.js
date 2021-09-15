@@ -5,10 +5,8 @@ const Result = ({ value, height }) => {
     <>
       <input
         style={{
-          width: "100%",
           border: 0,
           width: "100%",
-          border: "0px",
           background: "#585858",
           color: "#fff",
           height: "30px",

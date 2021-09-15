@@ -1,11 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import ResultRow from "./resultRow";
 import Button from "./button";
+import { useSelector, useDispatch } from "react-redux";
+
+import { setResult, del, selectResult } from "./calculatorSlice";
 const Calculator = () => {
   const [expression, setExpression] = useState("");
-  const [result, setResult] = useState("");
-  useEffect(() => {}, [expression, result]);
-
+  // const [result, setResult] = useState("");
+  // useEffect(() => {}, [expression, result]);
+  const result = useSelector(selectResult);
+  const dispatch = useDispatch();
   const handleDefault = (value) => {
     let exp = expression;
     exp = expression + value;
@@ -24,21 +28,24 @@ const Calculator = () => {
           try {
             ans = eval(expression);
           } catch (err) {
-            setResult("Math Error");
+            dispatch(setResult("Math Error"));
           }
-          if (ans === undefined) setResult("Math Error");
+          if (ans === undefined) dispatch(setResult("Math Error"));
           // update result in our state.
           else {
-            setResult(ans);
+            // setResult(ans);
+            // setExpression("");
+            dispatch(setResult(ans));
             setExpression("");
-            break;
           }
         }
+        break;
       }
       case "Clr": {
         // if it's the Clears sign, just clean our
         // expression and result in the state
-        setResult("");
+        // setResult("");
+        dispatch(del(""));
         setExpression("");
         break;
       }
@@ -51,6 +58,7 @@ const Calculator = () => {
       default: {
         // for every other command, update the answer in the state
         handleDefault(value);
+
         break;
       }
     }
