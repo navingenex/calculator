@@ -11,9 +11,15 @@ const Calculator = () => {
   const result = useSelector(selectResult);
   const dispatch = useDispatch();
   const handleDefault = (value) => {
-    let exp = expression;
-    exp = expression + value;
-    setExpression(exp);
+    if (result) {
+      // getting result valu for further calculation
+      let exp = result;
+      setExpression(result + value);
+      dispatch(setResult(""));
+    } else {
+      let exp = expression;
+      setExpression(expression + value);
+    }
   };
   const handleClick = (event) => {
     // get the value from the target element (button)
@@ -66,43 +72,45 @@ const Calculator = () => {
 
   return (
     <>
+      {/* expression and result will be display here */}
       <ResultRow expression={expression} result={result} />
       <div
         style={{
           display: "flex",
-          border: "1px solid",
+          border: "1px solid #747474",
           width: "100%",
           justifyContent: "space-between",
         }}
       >
         <div>
           <Button handleClick={handleClick} label={"7"} />
-          <Button handleClick={handleClick} label={"8"} />
-          <Button handleClick={handleClick} label={"9"} />
-          <Button handleClick={handleClick} label={"/"} />
-        </div>
-        <div>
           <Button handleClick={handleClick} label={"4"} />
-          <Button handleClick={handleClick} label={"5"} />
-          <Button handleClick={handleClick} label={"6"} />
-          <Button handleClick={handleClick} label={"*"} />
-        </div>
-        <div>
           <Button handleClick={handleClick} label={"1"} />
-          <Button handleClick={handleClick} label={"2"} />
-          <Button handleClick={handleClick} label={"3"} />
-          <Button handleClick={handleClick} label={"-"} />
+          <Button handleClick={handleClick} label={"0"} />
         </div>
         <div>
-          <Button handleClick={handleClick} label={"0"} />
+          <Button handleClick={handleClick} label={"8"} />
+          <Button handleClick={handleClick} label={"5"} />
+          <Button handleClick={handleClick} label={"2"} />
           <Button handleClick={handleClick} label={"."} />
-          <Button handleClick={handleClick} label={"%"} />
+        </div>
+        <div>
+          <Button handleClick={handleClick} label={"9"} />
+          <Button handleClick={handleClick} label={"6"} />
+          <Button handleClick={handleClick} label={"3"} />
+          <Button handleClick={handleClick} label={"/"} />
+
+          {/* <Button handleClick={handleClick} label={"%"} /> */}
+        </div>
+        <div>
+          <Button handleClick={handleClick} label={"*"} />
+          <Button handleClick={handleClick} label={"-"} />
           <Button handleClick={handleClick} label={"+"} />
+          <Button handleClick={handleClick} label={"Del"} />
         </div>
         <div>
           <Button handleClick={handleClick} label={"Clr"} />
-          <Button handleClick={handleClick} label={"Del"} />
-          <Button handleClick={handleClick} height="100px" label={"="} />
+          <Button handleClick={handleClick} height="154px" label={"="} />
         </div>
       </div>
     </>

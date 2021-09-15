@@ -21,7 +21,8 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   width: fit-content;
-  margin: 20% auto;
+  margin: 10% auto;
+  border: 2px solid #4a4848;
 }
 
 .App-link {
